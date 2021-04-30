@@ -29,7 +29,7 @@ public class AuthenticateController {
 	private JWTTokenProvider jwtTokenProvider;
 
 	@PostMapping("/authenticate")
-	public ResponseEntity authenticateUser(@RequestBody AuthenticateRequest authenticateRequest) {
+	public ResponseEntity<JwtAuthenticationResponse> authenticateUser(@RequestBody AuthenticateRequest authenticateRequest) {
 		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticateRequest.getUserName(), authenticateRequest.getPassword()));
         String token =jwtTokenProvider.generateToken((UserPrincipal)authentication.getPrincipal());
         log.info("Token Created {}",token);

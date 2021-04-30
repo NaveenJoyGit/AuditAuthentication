@@ -47,8 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.cors().and().csrf().disable()
-//		.exceptionHandling().authenticationEntryPoint(invalidLoginAttemptHandler)
-//				.and()
+		.exceptionHandling().authenticationEntryPoint(invalidLoginAttemptHandler)
+				.and()
 				.authorizeRequests().antMatchers("/authenticate/**").permitAll()
 				.antMatchers("/h2-console/**").permitAll()
 				.anyRequest().authenticated();
